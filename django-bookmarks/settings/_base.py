@@ -43,6 +43,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "0.0.0.0",
+    'mysite.com',
+
 ]
 
 
@@ -57,7 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third-party
-    # ...
+    'django_extensions',
     # local
     'django-bookmarks.apps.account'
 ]
@@ -78,7 +80,7 @@ ROOT_URLCONF = 'django-bookmarks.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'django-bookmarks', 'templates')],
+        'DIRS': [],  # [os.path.join(BASE_DIR, 'django-bookmarks', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -97,7 +99,7 @@ WSGI_APPLICATION = 'django-bookmarks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': get_secret('DATABASE_NAME'),
@@ -106,8 +108,13 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }}
-
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.1/topics/auth/passwords/#password-validation
 
@@ -152,9 +159,9 @@ STATICFILES_DIRS = [
 ]
 
 # timestamp = get_git_changeset_timestamp(BASE_DIR)
-STATIC_URL = f'/static/'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

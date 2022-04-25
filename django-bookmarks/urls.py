@@ -23,7 +23,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('account/', include('django-bookmarks.apps.account.urls'))
+    path('account/', include('django-bookmarks.apps.account.urls')),
+    #  path('social-auth/', include('social_django.urls', namespace='social')),
+    path('images/', include('django-bookmarks.apps.images.urls', namespace='images'))
 ]
 
 if settings.DEBUG:

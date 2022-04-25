@@ -44,7 +44,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "0.0.0.0",
     'mysite.com',
-
+    'localhost'
 ]
 
 
@@ -60,8 +60,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third-party
     'django_extensions',
+    'sslserver',
     # local
-    'django-bookmarks.apps.account'
+    'django-bookmarks.apps.account',
+    'django-bookmarks.apps.images',
+
+
+
 ]
 
 MIDDLEWARE = [

@@ -61,15 +61,14 @@ INSTALLED_APPS = [
     # third-party
     'django_extensions',
     'sslserver',
+    'easy_thumbnails',
 
     # local
     'django-bookmarks.apps.account',
     'django-bookmarks.apps.images',
 
 
-
 ]
-
 
 
 MIDDLEWARE = [

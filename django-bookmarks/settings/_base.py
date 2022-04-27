@@ -9,7 +9,7 @@ import os
 import json
 import sys
 from django.core.exceptions import ImproperlyConfigured
-
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     # local
     'django-bookmarks.apps.account',
     'django-bookmarks.apps.images',
+    'django-bookmarks.apps.actions'
 
 
 ]
@@ -181,3 +182,7 @@ EMAIL_HOST = get_secret("EMAIL_HOST")
 EMAIL_PORT = get_secret("EMAIL_PORT")
 EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
